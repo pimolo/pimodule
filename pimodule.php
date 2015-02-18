@@ -46,10 +46,11 @@ class PiModule extends Module
     {
         $output = null;
 
+// test mauvais ! à refaire
+
         if (Tools::isSubmit('submit' . $this->name)) {
             $pimodule = strval(Tools::getValue('PIMODULE_NAME'));
-            if (!$pimodule
-                || empty($pimodule)
+            if (!isset($pimodule)
                 || !Validate::isGenericName($pimodule)
             )
                 $output .= $this->displayError($this->l('Invalid Configuration value'));
@@ -61,6 +62,9 @@ class PiModule extends Module
         return $output . $this->displayForm();
     }
 
+
+    //Formulaire avec un radio
+
     public function displayForm()
     {
         // Get default language
@@ -71,14 +75,30 @@ class PiModule extends Module
             'legend' => array(
                 'title' => $this->l('Settings'),
             ),
-            'input' => array(
+            'input' =>
+            array(
                 array(
                     'type' => 'radio',
                     'label' => $this->l('Vos options'),
                     'desc' => $this->l('Choisir une option'),
                     'name' => 'PIMODULE_NAME',
                     'required' => true,
-                    'values' => array(),
+                    'class' => 't',
+                    'is_bool' => true,
+
+                    'values' =>
+                    array(
+                        array(
+                        'id' => 'active_on',
+                        'value' => 1,
+                        'label' => $this->l('Activé')
+                        ),
+                        array(
+                          'id' => 'active_off',
+                          'value' => 0,
+                          'label' => $this->l('Desactivé')
+                        )
+                    ),
 
                 )
             ),
