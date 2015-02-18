@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>pimodule</name>
+	<displayName><![CDATA[Pimodule]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[C&#039;est le module du Swaggymolo.]]></description>
+	<author><![CDATA[PimoTeamolo]]></author>
+	<tab><![CDATA[Administration]]></tab>
+	<confirmUninstall><![CDATA[Voulez vous vraiment le désinstaller ?]]></confirmUninstall>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>
