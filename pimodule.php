@@ -40,4 +40,15 @@ class PiModule extends Module{
         return true;
     }
 
+
+    public function uninstall(){
+        
+        if(!parent::uninstall()){
+            return false;
+        }
+
+    return true;
+
+    }
+
 }
