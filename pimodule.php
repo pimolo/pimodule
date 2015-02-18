@@ -33,7 +33,7 @@ class PiModule extends Module{
 
     public function install(){
 
-        if(!parent::install() OR !Configuration::updateValue('MYMODULE_NAME', 'Pimodule'){
+        if(!parent::install() || !Configuration::updateValue('MYMODULE_NAME','Pimodule')){
                return false;
         }
 
