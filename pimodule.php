@@ -1,6 +1,7 @@
 <?php
-if(!defined('_PS_VERSION_'))
+if (!defined('_PS_VERSION_')) {
     exit;
+}
 
 class PiModule extends Module
 {
@@ -22,23 +23,24 @@ class PiModule extends Module
 
         $this->confirmUninstall = $this->l('Voulez vous vraiment le désinstaller ?');
 
-        if (!Configuration::get('PIMODULE_NAME'))
+        if (!Configuration::get('PIMODULE_NAME')) {
             $this->warning = $this->l('No name provided');
+        }
     }
 
     public function install()
     {
-        if (!parent::install() ||
-            !Configuration::updateValue('PIMODULE_NAME', 'my friend')
-        )
+        if (!parent::install() || !Configuration::updateValue('PIMODULE_NAME', 'my friend')) {
             return false;
+        }
         return true;
     }
 
     public function uninstall()
     {
-        if (!parent::uninstall())
+        if (!parent::uninstall()) {
             return false;
+        }
         return true;
     }
 
@@ -50,11 +52,9 @@ class PiModule extends Module
 
         if (Tools::isSubmit('submit' . $this->name)) {
             $pimodule = strval(Tools::getValue('PIMODULE_NAME'));
-            if (!isset($pimodule)
-                || !Validate::isGenericName($pimodule)
-            )
+            if (!isset($pimodule)|| !Validate::isGenericName($pimodule)) {
                 $output .= $this->displayError($this->l('Invalid Configuration value'));
-            else {
+            } else {
                 Configuration::updateValue('PIMODULE_NAME', $pimodule);
                 $output .= $this->displayConfirmation($this->l('Settings updated'));
             }
@@ -96,7 +96,7 @@ class PiModule extends Module
                         array(
                           'id' => 'active_off',
                           'value' => 0,
-                          'label' => $this->l('Desactivé')
+                          'label' => $this->l('Désactivé')
                         )
                     ),
 
@@ -143,6 +143,4 @@ class PiModule extends Module
 
         return $helper->generateForm($fields_form);
     }
-
 }
-
